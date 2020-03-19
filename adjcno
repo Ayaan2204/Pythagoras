@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+int req;
+int n;
+int success=0;
+
+int power(int x);
+
+void main()
+{
+    int i,j,k;
+    long pi,pj,pk;
+    printf("This program gives you a result for a^n + b^n = c^n \n");
+    printf("Please enter number of outputs \n");
+    scanf("%d",&req);
+    printf("Enter power \n");
+    scanf("%d",&n);
+    
+    
+    for(i=5; req>success; i++)
+    {
+        pi=power(i);
+        pj=power(i-1);
+        for(j=i-1; pj>pi/2; j--)
+        {
+            for(k=j-1; k>0; k--)
+            {
+                pk=power(k);
+                if(pk+pj==pi)
+                {
+                    success++;
+                    printf("%d,%d,%d \n",k,j,i);
+                }
+            }
+            
+            pj=power(j-1);
+        }
+    }
+
+}
+
+int power(x)
+{
+    
+    int i;
+    for(i=0; i<n-1; i++)
+    {
+        x=x*x;
+    }
+    return x;
+};
